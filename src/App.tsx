@@ -172,9 +172,9 @@ function App() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { name: "Discord", icon: <MessageSquare className="w-8 h-8" />, color: "bg-[#5865F2]", text: "Join Community", link: "#" },
-                    { name: "WhatsApp", icon: <Phone className="w-8 h-8" />, color: "bg-[#25D366]", text: "Chat via WA", link: "#" },
-                    { name: "Instagram", icon: <Instagram className="w-8 h-8" />, color: "bg-[#E4405F]", text: "Follow @razael", link: "#" }
+                    { name: "Discord", icon: <MessageSquare className="w-8 h-8" />, color: "bg-[#5865F2]", text: "Join Community", link: "https://razael-fox.my.id/discord" },
+                    { name: "WhatsApp", icon: <Phone className="w-8 h-8" />, color: "bg-[#25D366]", text: "Chat via WA", link: "https://razael-fox.my.id/whatsapp" },
+                    { name: "Instagram", icon: <Instagram className="w-8 h-8" />, color: "bg-[#E4405F]", text: "Follow @razael", link: "https://razael-fox.my.id/instagram" }
                   ].map((service) => (
                     <motion.a
                       key={service.name}
