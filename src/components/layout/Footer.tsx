@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Globe } from "lucide-react";
 
 const quotes = {
-  id: "Aku selalu penasaran maka cobalah tidak pernah coba maka tidak pernah tahu",
-  en: "I am always curious, so try it; if you never try, you'll never know",
-  jp: "私はいつも好奇心旺盛です。だから試してみてください。試さなければ、決して分かりません",
-  kr: "나는 항상 호기심이 많으니 시도해 보세요. 시도하지 않으면 결코 알 수 없습니다",
-  de: "Ich bin immer neugierig, also probieren Sie es aus; wenn Sie es nie versuchen, werden Sie es nie wissen"
+  id: "Aku selalu penasaran, jadi cobalah. Tidak pernah mencoba, maka tidak pernah tahu.",
+  en: "I am always curious, so give it a try. If you never try, you'll never know.",
+  jp: "私はいつも好奇心旺盛です。だから試してみてください。試さなければ、決して分かりません。",
+  kr: "나는 항상 호기심이 많으니 시도해 보세요. 시도하지 않으면 결코 알 수 없습니다.",
+  de: "Ich bin immer neugierig, also probieren Sie es aus; wenn Sie es nie versuchen, werden Sie es nie wissen."
 };
 
 type Language = keyof typeof quotes;
