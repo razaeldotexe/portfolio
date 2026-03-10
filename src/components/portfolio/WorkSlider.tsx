@@ -9,10 +9,10 @@ interface WorkItem {
 }
 
 const works: WorkItem[] = [
-  { title: "Enterprise Web Solution", image: "https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536_1280.jpg", category: "Programmer" },
-  { title: "Creative Brand Design", image: "https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924_1280.jpg", category: "Designer" },
-  { title: "Professional Video Edit", image: "https://cdn.pixabay.com/photo/2019/04/07/23/11/video-editor-4110940_1280.jpg", category: "Editor" },
-  { title: "Performance Engine Tuning", image: "https://cdn.pixabay.com/photo/2020/07/08/10/30/engine-5383371_1280.jpg", category: "Otomotif" },
+  { title: "Enterprise Web Solution", image: "https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_1280.jpg", category: "Programmer" },
+  { title: "Creative Brand Design", image: "https://cdn.pixabay.com/photo/2016/11/29/06/15/plans-1867745_1280.jpg", category: "Designer" },
+  { title: "Professional Video Edit", image: "https://cdn.pixabay.com/photo/2015/05/15/02/07/computer-767781_1280.jpg", category: "Editor" },
+  { title: "Performance Engine Tuning", image: "https://cdn.pixabay.com/photo/2014/06/04/16/52/classic-car-362176_1280.jpg", category: "Otomotif" },
 ];
 
 export function WorkSlider() {
@@ -24,9 +24,9 @@ export function WorkSlider() {
   const handleDragEnd = (_: any, info: any) => {
     const swipeThreshold = 50;
     if (info.offset.x < -swipeThreshold) {
-      next();
+      if (index < works.length - 1) next();
     } else if (info.offset.x > swipeThreshold) {
-      prev();
+      if (index > 0) prev();
     }
   };
 
@@ -35,10 +35,18 @@ export function WorkSlider() {
       <div className="flex items-center justify-between mb-8 px-6">
         <h2 className="text-3xl font-bold font-outfit text-white">Highlighted Works</h2>
         <div className="flex gap-2">
-          <button onClick={prev} className="p-2 border border-white/10 rounded-full hover:bg-white/5 text-white transition-colors">
+          <button 
+            onClick={prev} 
+            disabled={index === 0}
+            className="p-2 border border-white/10 rounded-full hover:bg-white/5 text-white transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+          >
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button onClick={next} className="p-2 border border-white/10 rounded-full hover:bg-white/5 text-white transition-colors">
+          <button 
+            onClick={next} 
+            disabled={index === works.length - 1}
+            className="p-2 border border-white/10 rounded-full hover:bg-white/5 text-white transition-colors disabled:opacity-20 disabled:cursor-not-allowed"
+          >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
@@ -50,7 +58,7 @@ export function WorkSlider() {
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
           animate={{ x: `-${index * (window.innerWidth < 768 ? 85 : 42)}%` }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: "spring", stiffness: 200, damping: 25 }}
           className="flex gap-6 w-full"
         >
           {works.map((work, i) => (
