@@ -70,39 +70,39 @@ function App() {
         <AnimatePresence mode="wait">
           {currentPage === "home" && (
             <PageWrapper key="home">
-              <section className="px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
-                <div className="space-y-8">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-xs font-bold uppercase tracking-widest">
+              <section className="px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 md:mb-24">
+                <div className="space-y-6 md:space-y-8 text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] md:text-xs font-bold uppercase tracking-widest mx-auto lg:mx-0">
                     <Rocket className="w-3 h-3" /> Available for projects
                   </div>
-                  <h1 className="text-5xl md:text-7xl font-bold font-outfit leading-tight">
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-outfit leading-tight">
                     Crafting <span className="text-brand-primary">Digital</span> Experiences.
                   </h1>
-                  <p className="text-lg text-white/60 max-w-lg leading-relaxed">
+                  <p className="text-base md:text-lg text-white/60 max-w-lg leading-relaxed mx-auto lg:mx-0">
                     Saya adalah Razael Saputra, seorang multi-profesi yang berdedikasi dalam dunia teknologi, desain, otomotif, dan kreatifitas video.
                   </p>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <button 
                       onClick={() => setCurrentPage("projects")}
-                      className="px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-primary/20"
+                      className="px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-primary/20 w-full sm:w-auto"
                     >
                       View My Work
                     </button>
                     <button 
                       onClick={() => setCurrentPage("contact")}
-                      className="px-8 py-4 border border-white/10 hover:bg-white/5 text-white font-bold rounded-xl transition-all"
+                      className="px-8 py-4 border border-white/10 hover:bg-white/5 text-white font-bold rounded-xl transition-all w-full sm:w-auto"
                     >
                       Let's Talk
                     </button>
                   </div>
                 </div>
                 
-                <div className="relative">
-                  <div className="absolute -inset-4 bg-brand-primary/20 blur-3xl rounded-full" />
+                <div className="relative order-first lg:order-last">
+                  <div className="absolute -inset-4 bg-brand-primary/20 blur-3xl rounded-full opacity-50 md:opacity-100" />
                   <img 
                     src="/photo.png" 
                     alt="Razael Saputra" 
-                    className="relative z-10 w-full max-w-md mx-auto aspect-square object-cover object-top rounded-3xl border border-white/10 shadow-2xl"
+                    className="relative z-10 w-full max-w-[280px] md:max-w-md mx-auto aspect-square object-cover object-top rounded-3xl border border-white/10 shadow-2xl"
                   />
                 </div>
               </section>
