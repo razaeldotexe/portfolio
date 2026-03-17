@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Header } from "./components/layout/Header";
 import { Footer } from "./components/layout/Footer";
+import { CustomCursor } from "./components/layout/CustomCursor";
 import { WorkSlider } from "./components/portfolio/WorkSlider";
 import { GithubProjects } from "./components/portfolio/GithubProjects";
 import { RepoDetail } from "./components/portfolio/RepoDetail";
@@ -64,6 +65,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-obsidian text-white selection:bg-brand-primary selection:text-white">
+      <CustomCursor />
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
       
       <main>
@@ -84,13 +86,13 @@ function App() {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <button 
                       onClick={() => setCurrentPage("projects")}
-                      className="px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-primary/20 w-full sm:w-auto"
+                      className="px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-primary/20 w-full sm:w-auto cursor-pointer"
                     >
                       View My Work
                     </button>
                     <button 
                       onClick={() => setCurrentPage("contact")}
-                      className="px-8 py-4 border border-white/10 hover:bg-white/5 text-white font-bold rounded-xl transition-all w-full sm:w-auto"
+                      className="px-8 py-4 border border-white/10 hover:bg-white/5 text-white font-bold rounded-xl transition-all w-full sm:w-auto cursor-pointer"
                     >
                       Let's Talk
                     </button>
@@ -180,7 +182,7 @@ function App() {
                       key={service.name}
                       href={service.link}
                       whileHover={{ y: -5 }}
-                      className="p-8 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center text-center gap-6 group hover:border-brand-primary transition-all"
+                      className="p-8 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center text-center gap-6 group hover:border-brand-primary transition-all cursor-pointer"
                     >
                       <div className={`p-4 rounded-xl ${service.color} text-white shadow-lg shadow-black/20`}>
                         {service.icon}

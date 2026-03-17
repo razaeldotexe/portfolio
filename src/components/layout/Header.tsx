@@ -59,7 +59,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
           <button
             key={item}
             onClick={() => onNavigate(item.toLowerCase())}
-            className={`text-sm font-medium transition-colors ${
+            className={`text-sm font-medium transition-colors cursor-pointer ${
               currentPage === item.toLowerCase() 
               ? "text-brand-primary" 
               : "text-white/70 hover:text-brand-secondary"
@@ -72,7 +72,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
       {/* Mobile Menu Button */}
       <button 
-        className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+        className="md:hidden p-2 text-white/70 hover:text-white transition-colors cursor-pointer"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
         {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -91,7 +91,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
               <button
                 key={item}
                 onClick={() => handleNavigate(item.toLowerCase())}
-                className={`text-left text-lg font-medium py-2 transition-colors ${
+                className={`text-left text-lg font-medium py-2 transition-colors cursor-pointer ${
                   currentPage === item.toLowerCase() 
                   ? "text-brand-primary" 
                   : "text-white/70"

@@ -31,7 +31,7 @@ export function GithubProjects() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: i * 0.1 }}
-          className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-primary/50 transition-all group relative"
+          className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-brand-primary/50 transition-all group relative cursor-pointer"
         >
           <div className="flex justify-between items-start mb-4">
             <div className="p-2 rounded-lg bg-brand-primary/10 text-brand-primary">

@@ -64,7 +64,7 @@ export function WorkSlider() {
           {works.map((work, i) => (
             <motion.div
               key={i}
-              className="min-w-[85%] md:min-w-[40%] h-[350px] md:h-[450px] relative rounded-2xl overflow-hidden group border border-white/10"
+              className="min-w-[85%] md:min-w-[40%] h-[350px] md:h-[450px] relative rounded-2xl overflow-hidden group border border-white/10 cursor-pointer"
               whileHover={{ y: -10 }}
             >
               <img 

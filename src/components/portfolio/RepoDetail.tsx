@@ -45,7 +45,7 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
     <div className="max-w-7xl mx-auto px-6 py-12">
       <button 
         onClick={onBack}
-        className="flex items-center gap-2 text-white/60 hover:text-brand-primary transition-colors mb-8 group"
+        className="flex items-center gap-2 text-white/60 hover:text-brand-primary transition-colors mb-8 group cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         Back to projects
