@@ -8,7 +8,19 @@ import { RepoDetail } from "./components/portfolio/RepoDetail";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Briefcase, User as UserIcon, Code2, Rocket, MessageSquare, Phone, Instagram } from "lucide-react";
 
-type Page = "home" | "about" | "services" | "projects" | "contact" | "repo-detail";
+export type Page = "home" | "about" | "services" | "projects" | "contact" | "repo-detail";
+
+const PageWrapper = ({ children }: { children: React.ReactNode }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+    transition={{ duration: 0.5 }}
+    className="pt-32 pb-20"
+  >
+    {children}
+  </motion.div>
+);
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>("home");
@@ -50,18 +62,6 @@ function App() {
       setFormStatus("error");
     }
   };
-
-  const PageWrapper = ({ children }: { children: React.ReactNode }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.5 }}
-      className="pt-32 pb-20"
-    >
-      {children}
-    </motion.div>
-  );
 
   return (
     <div className="min-h-screen bg-obsidian text-white selection:bg-white selection:text-black">

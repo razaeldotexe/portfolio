@@ -11,7 +11,7 @@ export function GithubProjects() {
   useEffect(() => {
     githubService.getRepositories("razaeldotexe")
       .then(setRepos)
-      .catch((err: any) => console.error("Error fetching repos:", err))
+      .catch((err: Error) => console.error("Error fetching repos:", err))
       .finally(() => setLoading(false));
   }, []);
 

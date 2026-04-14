@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Page } from "../../App";
 
 const professions = [
   "Programmer",
@@ -11,7 +12,7 @@ const professions = [
 
 interface HeaderProps {
   currentPage: string;
-  onNavigate: (page: any) => void;
+  onNavigate: (page: Page) => void;
 }
 
 export function Header({ currentPage, onNavigate }: HeaderProps) {
@@ -27,7 +28,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
 
   const menuItems = ["Home", "About", "Services", "Projects", "Contact"];
 
-  const handleNavigate = (page: string) => {
+  const handleNavigate = (page: Page) => {
     onNavigate(page);
     setIsMenuOpen(false);
   };
@@ -58,7 +59,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
         {menuItems.map((item) => (
           <button
             key={item}
-            onClick={() => onNavigate(item.toLowerCase())}
+            onClick={() => onNavigate(item.toLowerCase() as Page)}
             className={`text-sm font-medium transition-colors cursor-pointer ${
               currentPage === item.toLowerCase() 
               ? "text-white" 
@@ -90,7 +91,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             {menuItems.map((item) => (
               <button
                 key={item}
-                onClick={() => handleNavigate(item.toLowerCase())}
+                onClick={() => handleNavigate(item.toLowerCase() as Page)}
                 className={`text-left text-lg font-medium py-2 transition-colors cursor-pointer ${
                   currentPage === item.toLowerCase() 
                   ? "text-white" 
