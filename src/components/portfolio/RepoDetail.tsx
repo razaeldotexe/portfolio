@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { githubService } from "@/lib/github";
-import type { Commit, Branch, Contributor } from "@/lib/github";
-import { 
-  GitCommit, 
-  GitBranch, 
-  Users, 
-  ArrowLeft, 
-  Calendar, 
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { githubService } from '@/lib/github';
+import type { Commit, Branch, Contributor } from '@/lib/github';
+import {
+  GitCommit,
+  GitBranch,
+  Users,
+  ArrowLeft,
+  Calendar,
   User as UserIcon,
-  Loader2
-} from "lucide-react";
+  Loader2,
+} from 'lucide-react';
 
 interface RepoDetailProps {
   repoName: string;
@@ -26,7 +26,8 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    githubService.getRepositoryDetails("razaeldotexe", repoName)
+    githubService
+      .getRepositoryDetails('razaeldotexe', repoName)
       .then(setData)
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -36,14 +37,16 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
     return (
       <div className="flex flex-col justify-center items-center py-40 gap-4">
         <Loader2 className="w-10 h-10 text-white/20 animate-spin" />
-        <p className="text-white/40 animate-pulse">Fetching repository data...</p>
+        <p className="text-white/40 animate-pulse">
+          Fetching repository data...
+        </p>
       </div>
     );
   }
 
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
-      <button 
+      <button
         onClick={onBack}
         className="flex items-center gap-2 text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer"
       >
@@ -106,8 +109,8 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
               Branches
             </h3>
             <div className="flex flex-wrap gap-2">
-              {data?.branches.map(branch => (
-                <span 
+              {data?.branches.map((branch) => (
+                <span
                   key={branch.name}
                   className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-white/70"
                 >
@@ -124,15 +127,23 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
               Contributors
             </h3>
             <div className="grid grid-cols-1 gap-4">
-              {data?.contributors.map(contributor => (
-                <div 
+              {data?.contributors.map((contributor) => (
+                <div
                   key={contributor.login}
                   className="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/5"
                 >
-                  <img src={contributor.avatar_url} className="w-10 h-10 rounded-full border border-white/10" alt={contributor.login} />
+                  <img
+                    src={contributor.avatar_url}
+                    className="w-10 h-10 rounded-full border border-white/10"
+                    alt={contributor.login}
+                  />
                   <div>
-                    <p className="text-sm font-bold text-white">{contributor.login}</p>
-                    <p className="text-xs text-white/40">{contributor.contributions} contributions</p>
+                    <p className="text-sm font-bold text-white">
+                      {contributor.login}
+                    </p>
+                    <p className="text-xs text-white/40">
+                      {contributor.contributions} contributions
+                    </p>
                   </div>
                 </div>
               ))}

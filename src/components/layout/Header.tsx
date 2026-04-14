@@ -1,14 +1,9 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import type { Page } from "../../App";
+import { useState, useEffect } from 'react';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import type { Page } from '../../App';
 
-const professions = [
-  "Programmer",
-  "Designer",
-  "Editor",
-  "Otomotif"
-];
+const professions = ['Programmer', 'Designer', 'Editor', 'Otomotif'];
 
 interface HeaderProps {
   currentPage: string;
@@ -26,7 +21,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
     return () => clearInterval(timer);
   }, []);
 
-  const menuItems = ["Home", "About", "Services", "Projects", "Contact"];
+  const menuItems = ['Home', 'About', 'Services', 'Projects', 'Contact'];
 
   const handleNavigate = (page: Page) => {
     onNavigate(page);
@@ -53,7 +48,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
           </AnimatePresence>
         </div>
       </div>
-      
+
       {/* Desktop Navigation */}
       <nav className="hidden md:flex gap-8 items-center">
         {menuItems.map((item) => (
@@ -61,9 +56,9 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             key={item}
             onClick={() => onNavigate(item.toLowerCase() as Page)}
             className={`text-sm font-medium transition-colors cursor-pointer ${
-              currentPage === item.toLowerCase() 
-              ? "text-white" 
-              : "text-white/40 hover:text-white"
+              currentPage === item.toLowerCase()
+                ? 'text-white'
+                : 'text-white/40 hover:text-white'
             }`}
           >
             {item}
@@ -72,7 +67,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
       </nav>
 
       {/* Mobile Menu Button */}
-      <button 
+      <button
         className="md:hidden p-2 text-white/70 hover:text-white transition-colors cursor-pointer"
         onClick={() => setIsMenuOpen(!isMenuOpen)}
       >
@@ -93,9 +88,9 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 key={item}
                 onClick={() => handleNavigate(item.toLowerCase() as Page)}
                 className={`text-left text-lg font-medium py-2 transition-colors cursor-pointer ${
-                  currentPage === item.toLowerCase() 
-                  ? "text-white" 
-                  : "text-white/40"
+                  currentPage === item.toLowerCase()
+                    ? 'text-white'
+                    : 'text-white/40'
                 }`}
               >
                 {item}

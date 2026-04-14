@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-brand-primary: #ffffff;
@@ -11,8 +11,8 @@
   --color-teal-dark: #404040;
   --color-rust: #737373;
 
-  --font-inter: "Inter", sans-serif;
-  --font-outfit: "Outfit", sans-serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
 }
 
 :root {
@@ -37,7 +37,12 @@ body {
   background-color: var(--color-obsidian);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-outfit);
 }
 

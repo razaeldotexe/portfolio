@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { motion, useSpring } from "framer-motion";
+import { useState, useEffect } from 'react';
+import { motion, useSpring } from 'framer-motion';
 
 export function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -19,11 +19,11 @@ export function CustomCursor() {
     const handleHoverStart = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
-        target.tagName === "BUTTON" ||
-        target.tagName === "A" ||
-        target.closest(".cursor-pointer") ||
-        target.closest("button") ||
-        target.closest("a")
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.closest('.cursor-pointer') ||
+        target.closest('button') ||
+        target.closest('a')
       ) {
         setIsHovering(true);
       }
@@ -33,14 +33,14 @@ export function CustomCursor() {
       setIsHovering(false);
     };
 
-    window.addEventListener("mousemove", moveMouse);
-    window.addEventListener("mouseover", handleHoverStart);
-    window.addEventListener("mouseout", handleHoverEnd);
+    window.addEventListener('mousemove', moveMouse);
+    window.addEventListener('mouseover', handleHoverStart);
+    window.addEventListener('mouseout', handleHoverEnd);
 
     return () => {
-      window.removeEventListener("mousemove", moveMouse);
-      window.removeEventListener("mouseover", handleHoverStart);
-      window.removeEventListener("mouseout", handleHoverEnd);
+      window.removeEventListener('mousemove', moveMouse);
+      window.removeEventListener('mouseover', handleHoverStart);
+      window.removeEventListener('mouseout', handleHoverEnd);
     };
   }, [cursorX, cursorY]);
 
@@ -55,11 +55,13 @@ export function CustomCursor() {
         }}
         animate={{
           scale: isHovering ? 2 : 1,
-          backgroundColor: isHovering ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0)",
+          backgroundColor: isHovering
+            ? 'rgba(255, 255, 255, 0.1)'
+            : 'rgba(255, 255, 255, 0)',
         }}
-        transition={{ type: "spring", stiffness: 250, damping: 20 }}
+        transition={{ type: 'spring', stiffness: 250, damping: 20 }}
       />
-      
+
       {/* Background Glow - follows cursor exactly */}
       <motion.div
         className="fixed top-0 left-0 w-4 h-4 rounded-full bg-white/20 blur-md pointer-events-none z-[9998] hidden md:block"

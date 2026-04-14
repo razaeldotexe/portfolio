@@ -1,14 +1,29 @@
-import { useState } from "react";
-import { Header } from "./components/layout/Header";
-import { Footer } from "./components/layout/Footer";
-import { CustomCursor } from "./components/layout/CustomCursor";
-import { WorkSlider } from "./components/portfolio/WorkSlider";
-import { GithubProjects } from "./components/portfolio/GithubProjects";
-import { RepoDetail } from "./components/portfolio/RepoDetail";
-import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Briefcase, User as UserIcon, Code2, Rocket, MessageSquare, Phone, Instagram } from "lucide-react";
+import { useState } from 'react';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
+import { CustomCursor } from './components/layout/CustomCursor';
+import { WorkSlider } from './components/portfolio/WorkSlider';
+import { GithubProjects } from './components/portfolio/GithubProjects';
+import { RepoDetail } from './components/portfolio/RepoDetail';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Mail,
+  Briefcase,
+  User as UserIcon,
+  Code2,
+  Rocket,
+  MessageSquare,
+  Phone,
+  Instagram,
+} from 'lucide-react';
 
-export type Page = "home" | "about" | "services" | "projects" | "contact" | "repo-detail";
+export type Page =
+  | 'home'
+  | 'about'
+  | 'services'
+  | 'projects'
+  | 'contact'
+  | 'repo-detail';
 
 const PageWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
@@ -23,43 +38,48 @@ const PageWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 function App() {
-  const [currentPage, setCurrentPage] = useState<Page>("home");
+  const [currentPage, setCurrentPage] = useState<Page>('home');
   const [selectedRepo, setSelectedRepo] = useState<string | null>(null);
-  const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [formStatus, setFormStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle');
 
   const navigateTorepo = (repoName: string) => {
     setSelectedRepo(repoName);
-    setCurrentPage("repo-detail");
+    setCurrentPage('repo-detail');
     window.scrollTo(0, 0);
   };
 
   const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormStatus("loading");
-    
+    setFormStatus('loading');
+
     const formData = new FormData(e.currentTarget);
     const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
     };
 
     try {
-      const response = await fetch("https://etsukgjzmdgxgcejbvvf.supabase.co/functions/v1/send-contact-email", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        'https://etsukgjzmdgxgcejbvvf.supabase.co/functions/v1/send-contact-email',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (response.ok) {
-        setFormStatus("success");
+        setFormStatus('success');
         (e.target as HTMLFormElement).reset();
       } else {
-        setFormStatus("error");
+        setFormStatus('error');
       }
     } catch (error) {
-      console.error("Error sending email:", error);
-      setFormStatus("error");
+      console.error('Error sending email:', error);
+      setFormStatus('error');
     }
   };
 
@@ -67,10 +87,10 @@ function App() {
     <div className="min-h-screen bg-obsidian text-white selection:bg-white selection:text-black">
       <CustomCursor />
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
-      
+
       <main>
         <AnimatePresence mode="wait">
-          {currentPage === "home" && (
+          {currentPage === 'home' && (
             <PageWrapper key="home">
               <section className="px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 md:mb-24">
                 <div className="space-y-6 md:space-y-8 text-center lg:text-left">
@@ -78,54 +98,68 @@ function App() {
                     <Rocket className="w-3 h-3" /> Available for projects
                   </div>
                   <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-outfit leading-tight">
-                    Crafting <span className="text-white">Digital</span> Experiences.
+                    Crafting <span className="text-white">Digital</span>{' '}
+                    Experiences.
                   </h1>
                   <p className="text-base md:text-lg text-white/60 max-w-lg leading-relaxed mx-auto lg:mx-0">
-                    Saya adalah Razael Saputra, seorang multi-profesi yang berdedikasi dalam dunia teknologi, desain, otomotif, dan kreatifitas video.
+                    Saya adalah Razael Saputra, seorang multi-profesi yang
+                    berdedikasi dalam dunia teknologi, desain, otomotif, dan
+                    kreatifitas video.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                    <button 
-                      onClick={() => setCurrentPage("projects")}
+                    <button
+                      onClick={() => setCurrentPage('projects')}
                       className="px-8 py-4 bg-white hover:bg-white/90 text-black font-bold rounded-xl transition-all shadow-lg shadow-white/10 w-full sm:w-auto cursor-pointer"
                     >
                       View My Work
                     </button>
-                    <button 
-                      onClick={() => setCurrentPage("contact")}
+                    <button
+                      onClick={() => setCurrentPage('contact')}
                       className="px-8 py-4 border border-white/10 hover:bg-white/5 text-white font-bold rounded-xl transition-all w-full sm:w-auto cursor-pointer"
                     >
                       Let's Talk
                     </button>
                   </div>
                 </div>
-                
+
                 <div className="relative order-first lg:order-last">
                   <div className="absolute -inset-4 bg-white/10 blur-3xl rounded-full opacity-50 md:opacity-100" />
-                  <img 
-                    src="/photo.png" 
-                    alt="Razael Saputra" 
+                  <img
+                    src="/photo.png"
+                    alt="Razael Saputra"
                     className="relative z-10 w-full max-w-[280px] md:max-w-md mx-auto aspect-square object-cover object-top rounded-3xl border border-white/10 shadow-2xl grayscale"
                   />
                 </div>
               </section>
 
               <WorkSlider />
-              
+
               <section className="py-24 bg-white/[0.02]">
                 <div className="max-w-7xl mx-auto px-6">
                   <div className="mb-16 text-center">
-                    <h2 className="text-4xl font-bold font-outfit mb-4">Latest Repositories</h2>
-                    <p className="text-white/40">Real-time data from my GitHub profile</p>
+                    <h2 className="text-4xl font-bold font-outfit mb-4">
+                      Latest Repositories
+                    </h2>
+                    <p className="text-white/40">
+                      Real-time data from my GitHub profile
+                    </p>
                   </div>
-                  <div onClick={(e) => {
-                    const target = e.target as HTMLElement;
-                    const link = target.closest('a');
-                    if (link && link.getAttribute('href')?.startsWith('/project/')) {
-                      e.preventDefault();
-                      const name = link.getAttribute('href')?.replace('/project/', '');
-                      if (name) navigateTorepo(name);
-                    }
-                  }}>
+                  <div
+                    onClick={(e) => {
+                      const target = e.target as HTMLElement;
+                      const link = target.closest('a');
+                      if (
+                        link &&
+                        link.getAttribute('href')?.startsWith('/project/')
+                      ) {
+                        e.preventDefault();
+                        const name = link
+                          .getAttribute('href')
+                          ?.replace('/project/', '');
+                        if (name) navigateTorepo(name);
+                      }
+                    }}
+                  >
                     <GithubProjects />
                   </div>
                 </div>
@@ -133,50 +167,84 @@ function App() {
             </PageWrapper>
           )}
 
-          {currentPage === "projects" && (
+          {currentPage === 'projects' && (
             <PageWrapper key="projects">
               <div className="max-w-7xl mx-auto px-6">
                 <div className="mb-16">
-                  <h2 className="text-4xl font-bold font-outfit mb-4">My Projects</h2>
-                  <p className="text-white/40">Explore my technical repositories and creative works.</p>
+                  <h2 className="text-4xl font-bold font-outfit mb-4">
+                    My Projects
+                  </h2>
+                  <p className="text-white/40">
+                    Explore my technical repositories and creative works.
+                  </p>
                 </div>
-                <div onClick={(e) => {
+                <div
+                  onClick={(e) => {
                     const target = e.target as HTMLElement;
                     const link = target.closest('a');
-                    if (link && link.getAttribute('href')?.startsWith('/project/')) {
+                    if (
+                      link &&
+                      link.getAttribute('href')?.startsWith('/project/')
+                    ) {
                       e.preventDefault();
-                      const name = link.getAttribute('href')?.replace('/project/', '');
+                      const name = link
+                        .getAttribute('href')
+                        ?.replace('/project/', '');
                       if (name) navigateTorepo(name);
                     }
-                  }}>
+                  }}
+                >
                   <GithubProjects />
                 </div>
               </div>
             </PageWrapper>
           )}
 
-          {currentPage === "repo-detail" && selectedRepo && (
+          {currentPage === 'repo-detail' && selectedRepo && (
             <PageWrapper key="repo-detail">
-              <RepoDetail 
-                repoName={selectedRepo} 
-                onBack={() => setCurrentPage("projects")} 
+              <RepoDetail
+                repoName={selectedRepo}
+                onBack={() => setCurrentPage('projects')}
               />
             </PageWrapper>
           )}
 
-          {currentPage === "services" && (
+          {currentPage === 'services' && (
             <PageWrapper key="services">
               <div className="max-w-4xl mx-auto px-6">
                 <div className="mb-16 text-center">
-                  <h2 className="text-4xl font-bold font-outfit mb-4">My Services & Socials</h2>
-                  <p className="text-white/40">Hubungi saya melalui platform di bawah ini untuk layanan profesional.</p>
+                  <h2 className="text-4xl font-bold font-outfit mb-4">
+                    My Services & Socials
+                  </h2>
+                  <p className="text-white/40">
+                    Hubungi saya melalui platform di bawah ini untuk layanan
+                    profesional.
+                  </p>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { name: "Discord", icon: <MessageSquare className="w-8 h-8" />, color: "bg-white/10", text: "Join Community", link: "https://razael-fox.my.id/discord" },
-                    { name: "WhatsApp", icon: <Phone className="w-8 h-8" />, color: "bg-white/10", text: "Chat via WA", link: "https://razael-fox.my.id/whatsapp" },
-                    { name: "Instagram", icon: <Instagram className="w-8 h-8" />, color: "bg-white/10", text: "Follow @razael", link: "https://razael-fox.my.id/instagram" }
+                    {
+                      name: 'Discord',
+                      icon: <MessageSquare className="w-8 h-8" />,
+                      color: 'bg-white/10',
+                      text: 'Join Community',
+                      link: 'https://razael-fox.my.id/discord',
+                    },
+                    {
+                      name: 'WhatsApp',
+                      icon: <Phone className="w-8 h-8" />,
+                      color: 'bg-white/10',
+                      text: 'Chat via WA',
+                      link: 'https://razael-fox.my.id/whatsapp',
+                    },
+                    {
+                      name: 'Instagram',
+                      icon: <Instagram className="w-8 h-8" />,
+                      color: 'bg-white/10',
+                      text: 'Follow @razael',
+                      link: 'https://razael-fox.my.id/instagram',
+                    },
                   ].map((service) => (
                     <motion.a
                       key={service.name}
@@ -184,15 +252,21 @@ function App() {
                       whileHover={{ y: -5 }}
                       className="p-8 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center text-center gap-6 group hover:border-white transition-all cursor-pointer"
                     >
-                      <div className={`p-4 rounded-xl ${service.color} text-white shadow-lg shadow-black/20`}>
+                      <div
+                        className={`p-4 rounded-xl ${service.color} text-white shadow-lg shadow-black/20`}
+                      >
                         {service.icon}
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold mb-1">{service.name}</h3>
-                        <p className="text-sm text-white/40 mb-4">Layanan fast response melalui {service.name}.</p>
+                        <h3 className="text-xl font-bold mb-1">
+                          {service.name}
+                        </h3>
+                        <p className="text-sm text-white/40 mb-4">
+                          Layanan fast response melalui {service.name}.
+                        </p>
                         <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest group-hover:bg-white group-hover:text-black group-hover:border-white transition-all">
                           {service.text}
-                       </span>
+                        </span>
                       </div>
                     </motion.a>
                   ))}
@@ -201,25 +275,32 @@ function App() {
             </PageWrapper>
           )}
 
-          {currentPage === "about" && (
+          {currentPage === 'about' && (
             <PageWrapper key="about">
               <div className="max-w-3xl mx-auto px-6 text-center space-y-8">
                 <UserIcon className="w-16 h-16 text-white mx-auto" />
                 <h2 className="text-4xl font-bold font-outfit">About Me</h2>
                 <div className="space-y-6 text-lg text-white/60 leading-relaxed text-left">
                   <p>
-                     Saya Razael Saputra, memiliki ketertarikan mendalam dalam berbagai bidang yang saya tekuni secara profesional. 
+                    Saya Razael Saputra, memiliki ketertarikan mendalam dalam
+                    berbagai bidang yang saya tekuni secara profesional.
                   </p>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <li className="p-6 rounded-2xl bg-white/5 border border-white/10">
                       <Code2 className="text-white mb-4" />
                       <h4 className="font-bold mb-2">Programmer</h4>
-                      <p className="text-sm">Membangun solusi perangkat lunak yang skalabel dan efisien.</p>
+                      <p className="text-sm">
+                        Membangun solusi perangkat lunak yang skalabel dan
+                        efisien.
+                      </p>
                     </li>
                     <li className="p-6 rounded-2xl bg-white/5 border border-white/10">
                       <Briefcase className="text-white mb-4" />
                       <h4 className="font-bold mb-2">Designer & Editor</h4>
-                      <p className="text-sm">Menciptakan visual yang memukau dan narasi video yang kuat.</p>
+                      <p className="text-sm">
+                        Menciptakan visual yang memukau dan narasi video yang
+                        kuat.
+                      </p>
                     </li>
                   </ul>
                 </div>
@@ -227,35 +308,73 @@ function App() {
             </PageWrapper>
           )}
 
-          {currentPage === "contact" && (
+          {currentPage === 'contact' && (
             <PageWrapper key="contact">
               <div className="max-w-xl mx-auto px-6 text-center space-y-12">
                 <div className="space-y-4">
                   <Mail className="w-16 h-16 text-white mx-auto" />
-                  <h2 className="text-4xl font-bold font-outfit">Ready to work?</h2>
-                  <p className="text-white/40">Hubungi saya untuk kolaborasi atau proyek menarik lainnya.</p>
+                  <h2 className="text-4xl font-bold font-outfit">
+                    Ready to work?
+                  </h2>
+                  <p className="text-white/40">
+                    Hubungi saya untuk kolaborasi atau proyek menarik lainnya.
+                  </p>
                 </div>
-                <form className="space-y-4 text-left" onSubmit={handleContactSubmit}>
+                <form
+                  className="space-y-4 text-left"
+                  onSubmit={handleContactSubmit}
+                >
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">Full Name</label>
-                    <input name="name" type="text" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all" placeholder="Your Name" />
+                    <label className="text-sm font-medium text-white/60">
+                      Full Name
+                    </label>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all"
+                      placeholder="Your Name"
+                    />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">Email Address</label>
-                    <input name="email" type="email" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all" placeholder="your@email.com" />
+                    <label className="text-sm font-medium text-white/60">
+                      Email Address
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all"
+                      placeholder="your@email.com"
+                    />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white/60">Message</label>
-                    <textarea name="message" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all h-32" placeholder="Tell me about your project" />
+                    <label className="text-sm font-medium text-white/60">
+                      Message
+                    </label>
+                    <textarea
+                      name="message"
+                      required
+                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all h-32"
+                      placeholder="Tell me about your project"
+                    />
                   </div>
-                  <button 
-                    disabled={formStatus === "loading"}
+                  <button
+                    disabled={formStatus === 'loading'}
                     className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    {formStatus === "loading" ? "Sending..." : "Send Message"}
+                    {formStatus === 'loading' ? 'Sending...' : 'Send Message'}
                   </button>
-                  {formStatus === "success" && <p className="text-white text-sm font-bold text-center">Pesan berhasil dikirim!</p>}
-                  {formStatus === "error" && <p className="text-white border border-white/20 bg-white/5 py-2 rounded-lg text-sm font-bold text-center">Gagal mengirim pesan. Silakan coba lagi.</p>}
+                  {formStatus === 'success' && (
+                    <p className="text-white text-sm font-bold text-center">
+                      Pesan berhasil dikirim!
+                    </p>
+                  )}
+                  {formStatus === 'error' && (
+                    <p className="text-white border border-white/20 bg-white/5 py-2 rounded-lg text-sm font-bold text-center">
+                      Gagal mengirim pesan. Silakan coba lagi.
+                    </p>
+                  )}
                 </form>
               </div>
             </PageWrapper>

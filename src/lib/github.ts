@@ -40,7 +40,9 @@ export interface Contributor {
 
 export const githubService = {
   getRepositories: async (username: string): Promise<Repository[]> => {
-    const response = await github.get(`/users/${username}/repos?sort=updated&per_page=6`);
+    const response = await github.get(
+      `/users/${username}/repos?sort=updated&per_page=6`
+    );
     return response.data;
   },
 
@@ -48,13 +50,13 @@ export const githubService = {
     const [commits, branches, contributors] = await Promise.all([
       github.get(`/repos/${username}/${repoName}/commits?per_page=10`),
       github.get(`/repos/${username}/${repoName}/branches`),
-      github.get(`/repos/${username}/${repoName}/contributors`)
+      github.get(`/repos/${username}/${repoName}/contributors`),
     ]);
 
     return {
       commits: commits.data as Commit[],
       branches: branches.data as Branch[],
-      contributors: contributors.data as Contributor[]
+      contributors: contributors.data as Contributor[],
     };
-  }
+  },
 };
