@@ -48,21 +48,21 @@ export function CustomCursor() {
     <>
       {/* Outer Circle - smooth lag effect */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-primary pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-white pointer-events-none z-[9999] hidden md:block"
         style={{
           x: cursorX,
           y: cursorY,
         }}
         animate={{
           scale: isHovering ? 2 : 1,
-          backgroundColor: isHovering ? "rgba(187, 104, 53, 0.1)" : "rgba(187, 104, 53, 0)",
+          backgroundColor: isHovering ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0)",
         }}
         transition={{ type: "spring", stiffness: 250, damping: 20 }}
       />
       
       {/* Background Glow - follows cursor exactly */}
       <motion.div
-        className="fixed top-0 left-0 w-4 h-4 rounded-full bg-brand-primary/20 blur-md pointer-events-none z-[9998] hidden md:block"
+        className="fixed top-0 left-0 w-4 h-4 rounded-full bg-white/20 blur-md pointer-events-none z-[9998] hidden md:block"
         animate={{
           x: mousePosition.x - 8,
           y: mousePosition.y - 8,

@@ -36,7 +36,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
     <header className="fixed top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center transition-all bg-obsidian/80 backdrop-blur-md border-b border-white/5">
       <div className="flex flex-col">
         <h1 className="text-xl font-bold font-outfit text-white tracking-tight">
-          Razael <span className="text-brand-primary">Saputra</span>
+          Razael <span className="text-white/90">Saputra</span>
         </h1>
         <div className="h-5 overflow-hidden">
           <AnimatePresence mode="wait">
@@ -45,7 +45,7 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
-              className="text-xs text-brand-secondary font-medium"
+              className="text-xs text-white/60 font-medium"
             >
               {professions[index]}
             </motion.p>
@@ -61,8 +61,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
             onClick={() => onNavigate(item.toLowerCase())}
             className={`text-sm font-medium transition-colors cursor-pointer ${
               currentPage === item.toLowerCase() 
-              ? "text-brand-primary" 
-              : "text-white/70 hover:text-brand-secondary"
+              ? "text-white" 
+              : "text-white/40 hover:text-white"
             }`}
           >
             {item}
@@ -93,8 +93,8 @@ export function Header({ currentPage, onNavigate }: HeaderProps) {
                 onClick={() => handleNavigate(item.toLowerCase())}
                 className={`text-left text-lg font-medium py-2 transition-colors cursor-pointer ${
                   currentPage === item.toLowerCase() 
-                  ? "text-brand-primary" 
-                  : "text-white/70"
+                  ? "text-white" 
+                  : "text-white/40"
                 }`}
               >
                 {item}

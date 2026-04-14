@@ -74,7 +74,7 @@ export function WorkSlider() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent pointer-events-none" />
               <div className="absolute bottom-6 left-6 right-6 pointer-events-none">
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-secondary mb-2 block">
+                <span className="text-xs font-bold uppercase tracking-widest text-white/60 mb-2 block">
                   {work.category}
                 </span>
                 <h3 className="text-xl font-bold text-white font-outfit">

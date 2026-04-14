@@ -35,7 +35,7 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
   if (loading) {
     return (
       <div className="flex flex-col justify-center items-center py-40 gap-4">
-        <Loader2 className="w-10 h-10 text-brand-primary animate-spin" />
+        <Loader2 className="w-10 h-10 text-white/20 animate-spin" />
         <p className="text-white/40 animate-pulse">Fetching repository data...</p>
       </div>
     );
@@ -45,7 +45,7 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
     <div className="max-w-7xl mx-auto px-6 py-12">
       <button 
         onClick={onBack}
-        className="flex items-center gap-2 text-white/60 hover:text-brand-primary transition-colors mb-8 group cursor-pointer"
+        className="flex items-center gap-2 text-white/60 hover:text-white transition-colors mb-8 group cursor-pointer"
       >
         <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
         Back to projects
@@ -56,7 +56,7 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
         <div className="lg:col-span-2 space-y-8">
           <div>
             <h2 className="text-3xl font-bold text-white font-outfit mb-2 flex items-center gap-3">
-              <GitCommit className="text-brand-primary w-8 h-8" />
+              <GitCommit className="text-white w-8 h-8" />
               Commit History
             </h2>
             <p className="text-white/40">Latest activity on {repoName}</p>
@@ -71,8 +71,8 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
                 transition={{ delay: i * 0.05 }}
                 className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-all flex gap-4"
               >
-                <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center shrink-0">
-                  <UserIcon className="w-5 h-5 text-brand-primary" />
+                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0">
+                  <UserIcon className="w-5 h-5 text-white/80" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <h4 className="text-white font-medium truncate mb-1">
@@ -102,7 +102,7 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
           {/* Branches */}
           <section>
             <h3 className="text-xl font-bold text-white font-outfit mb-6 flex items-center gap-2">
-              <GitBranch className="text-teal-muted w-5 h-5" />
+              <GitBranch className="text-white/60 w-5 h-5" />
               Branches
             </h3>
             <div className="flex flex-wrap gap-2">
@@ -120,7 +120,7 @@ export function RepoDetail({ repoName, onBack }: RepoDetailProps) {
           {/* Contributors */}
           <section>
             <h3 className="text-xl font-bold text-white font-outfit mb-6 flex items-center gap-2">
-              <Users className="text-brand-secondary w-5 h-5" />
+              <Users className="text-white/60 w-5 h-5" />
               Contributors
             </h3>
             <div className="grid grid-cols-1 gap-4">

@@ -64,7 +64,7 @@ function App() {
   );
 
   return (
-    <div className="min-h-screen bg-obsidian text-white selection:bg-brand-primary selection:text-white">
+    <div className="min-h-screen bg-obsidian text-white selection:bg-white selection:text-black">
       <CustomCursor />
       <Header currentPage={currentPage} onNavigate={setCurrentPage} />
       
@@ -74,11 +74,11 @@ function App() {
             <PageWrapper key="home">
               <section className="px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16 md:mb-24">
                 <div className="space-y-6 md:space-y-8 text-center lg:text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/10 border border-brand-primary/20 text-brand-primary text-[10px] md:text-xs font-bold uppercase tracking-widest mx-auto lg:mx-0">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] md:text-xs font-bold uppercase tracking-widest mx-auto lg:mx-0">
                     <Rocket className="w-3 h-3" /> Available for projects
                   </div>
                   <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-outfit leading-tight">
-                    Crafting <span className="text-brand-primary">Digital</span> Experiences.
+                    Crafting <span className="text-white">Digital</span> Experiences.
                   </h1>
                   <p className="text-base md:text-lg text-white/60 max-w-lg leading-relaxed mx-auto lg:mx-0">
                     Saya adalah Razael Saputra, seorang multi-profesi yang berdedikasi dalam dunia teknologi, desain, otomotif, dan kreatifitas video.
@@ -86,7 +86,7 @@ function App() {
                   <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                     <button 
                       onClick={() => setCurrentPage("projects")}
-                      className="px-8 py-4 bg-brand-primary hover:bg-brand-secondary text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-primary/20 w-full sm:w-auto cursor-pointer"
+                      className="px-8 py-4 bg-white hover:bg-white/90 text-black font-bold rounded-xl transition-all shadow-lg shadow-white/10 w-full sm:w-auto cursor-pointer"
                     >
                       View My Work
                     </button>
@@ -100,11 +100,11 @@ function App() {
                 </div>
                 
                 <div className="relative order-first lg:order-last">
-                  <div className="absolute -inset-4 bg-brand-primary/20 blur-3xl rounded-full opacity-50 md:opacity-100" />
+                  <div className="absolute -inset-4 bg-white/10 blur-3xl rounded-full opacity-50 md:opacity-100" />
                   <img 
                     src="/photo.png" 
                     alt="Razael Saputra" 
-                    className="relative z-10 w-full max-w-[280px] md:max-w-md mx-auto aspect-square object-cover object-top rounded-3xl border border-white/10 shadow-2xl"
+                    className="relative z-10 w-full max-w-[280px] md:max-w-md mx-auto aspect-square object-cover object-top rounded-3xl border border-white/10 shadow-2xl grayscale"
                   />
                 </div>
               </section>
@@ -174,15 +174,15 @@ function App() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {[
-                    { name: "Discord", icon: <MessageSquare className="w-8 h-8" />, color: "bg-[#5865F2]", text: "Join Community", link: "https://razael-fox.my.id/discord" },
-                    { name: "WhatsApp", icon: <Phone className="w-8 h-8" />, color: "bg-[#25D366]", text: "Chat via WA", link: "https://razael-fox.my.id/whatsapp" },
-                    { name: "Instagram", icon: <Instagram className="w-8 h-8" />, color: "bg-[#E4405F]", text: "Follow @razael", link: "https://razael-fox.my.id/instagram" }
+                    { name: "Discord", icon: <MessageSquare className="w-8 h-8" />, color: "bg-white/10", text: "Join Community", link: "https://razael-fox.my.id/discord" },
+                    { name: "WhatsApp", icon: <Phone className="w-8 h-8" />, color: "bg-white/10", text: "Chat via WA", link: "https://razael-fox.my.id/whatsapp" },
+                    { name: "Instagram", icon: <Instagram className="w-8 h-8" />, color: "bg-white/10", text: "Follow @razael", link: "https://razael-fox.my.id/instagram" }
                   ].map((service) => (
                     <motion.a
                       key={service.name}
                       href={service.link}
                       whileHover={{ y: -5 }}
-                      className="p-8 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center text-center gap-6 group hover:border-brand-primary transition-all cursor-pointer"
+                      className="p-8 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center text-center gap-6 group hover:border-white transition-all cursor-pointer"
                     >
                       <div className={`p-4 rounded-xl ${service.color} text-white shadow-lg shadow-black/20`}>
                         {service.icon}
@@ -190,7 +190,7 @@ function App() {
                       <div>
                         <h3 className="text-xl font-bold mb-1">{service.name}</h3>
                         <p className="text-sm text-white/40 mb-4">Layanan fast response melalui {service.name}.</p>
-                        <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest group-hover:bg-brand-primary group-hover:border-brand-primary transition-all">
+                        <span className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest group-hover:bg-white group-hover:text-black group-hover:border-white transition-all">
                           {service.text}
                        </span>
                       </div>
@@ -204,7 +204,7 @@ function App() {
           {currentPage === "about" && (
             <PageWrapper key="about">
               <div className="max-w-3xl mx-auto px-6 text-center space-y-8">
-                <UserIcon className="w-16 h-16 text-brand-primary mx-auto" />
+                <UserIcon className="w-16 h-16 text-white mx-auto" />
                 <h2 className="text-4xl font-bold font-outfit">About Me</h2>
                 <div className="space-y-6 text-lg text-white/60 leading-relaxed text-left">
                   <p>
@@ -212,12 +212,12 @@ function App() {
                   </p>
                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <li className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                      <Code2 className="text-brand-primary mb-4" />
+                      <Code2 className="text-white mb-4" />
                       <h4 className="font-bold mb-2">Programmer</h4>
                       <p className="text-sm">Membangun solusi perangkat lunak yang skalabel dan efisien.</p>
                     </li>
                     <li className="p-6 rounded-2xl bg-white/5 border border-white/10">
-                      <Briefcase className="text-teal-muted mb-4" />
+                      <Briefcase className="text-white mb-4" />
                       <h4 className="font-bold mb-2">Designer & Editor</h4>
                       <p className="text-sm">Menciptakan visual yang memukau dan narasi video yang kuat.</p>
                     </li>
@@ -231,31 +231,31 @@ function App() {
             <PageWrapper key="contact">
               <div className="max-w-xl mx-auto px-6 text-center space-y-12">
                 <div className="space-y-4">
-                  <Mail className="w-16 h-16 text-brand-secondary mx-auto" />
+                  <Mail className="w-16 h-16 text-white mx-auto" />
                   <h2 className="text-4xl font-bold font-outfit">Ready to work?</h2>
                   <p className="text-white/40">Hubungi saya untuk kolaborasi atau proyek menarik lainnya.</p>
                 </div>
                 <form className="space-y-4 text-left" onSubmit={handleContactSubmit}>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-white/60">Full Name</label>
-                    <input name="name" type="text" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary outline-none transition-all" placeholder="Your Name" />
+                    <input name="name" type="text" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all" placeholder="Your Name" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-white/60">Email Address</label>
-                    <input name="email" type="email" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary outline-none transition-all" placeholder="your@email.com" />
+                    <input name="email" type="email" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all" placeholder="your@email.com" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-white/60">Message</label>
-                    <textarea name="message" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-brand-primary outline-none transition-all h-32" placeholder="Tell me about your project" />
+                    <textarea name="message" required className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:border-white outline-none transition-all h-32" placeholder="Tell me about your project" />
                   </div>
                   <button 
                     disabled={formStatus === "loading"}
-                    className="w-full py-4 bg-white text-obsidian font-bold rounded-xl hover:bg-brand-primary hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-white/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {formStatus === "loading" ? "Sending..." : "Send Message"}
                   </button>
-                  {formStatus === "success" && <p className="text-brand-secondary text-sm font-bold text-center">Pesan berhasil dikirim!</p>}
-                  {formStatus === "error" && <p className="text-red-500 text-sm font-bold text-center">Gagal mengirim pesan. Silakan coba lagi.</p>}
+                  {formStatus === "success" && <p className="text-white text-sm font-bold text-center">Pesan berhasil dikirim!</p>}
+                  {formStatus === "error" && <p className="text-white border border-white/20 bg-white/5 py-2 rounded-lg text-sm font-bold text-center">Gagal mengirim pesan. Silakan coba lagi.</p>}
                 </form>
               </div>
             </PageWrapper>
