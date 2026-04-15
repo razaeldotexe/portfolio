@@ -7,13 +7,28 @@ export function Footer() {
         <div className="w-full pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40 border-t border-white/5">
           <p>© {currentYear} Razael Saputra. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">
+            <a
+              href="https://github.com/razaeldotexe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
               Github
             </a>
-            <a href="#" className="hover:text-white transition-colors">
-              LinkedIn
+            <a
+              href="https://www.facebook.com/share/1Sup6qAPBt/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
+              Facebook
             </a>
-            <a href="#" className="hover:text-white transition-colors">
+            <a
+              href="https://www.instagram.com/razael.deb"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition-colors"
+            >
               Instagram
             </a>
           </div>

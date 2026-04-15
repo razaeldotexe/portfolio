@@ -229,21 +229,35 @@ function App() {
                       icon: <MessageSquare className="w-8 h-8" />,
                       color: 'bg-white/10',
                       text: 'Join Community',
-                      link: 'https://razael-fox.my.id/discord',
+                      link: 'https://discord.gg/EV5pmc6BAX',
                     },
                     {
                       name: 'WhatsApp',
                       icon: <Phone className="w-8 h-8" />,
                       color: 'bg-white/10',
                       text: 'Chat via WA',
-                      link: 'https://razael-fox.my.id/whatsapp',
+                      link: "https://wa.me/6282225907841?text=Hey,%20I'm%20interested%20in%20your%20services.%20Do%20you%20have%20any%20more%20details?",
                     },
                     {
                       name: 'Instagram',
                       icon: <Instagram className="w-8 h-8" />,
                       color: 'bg-white/10',
                       text: 'Follow @razael',
-                      link: 'https://razael-fox.my.id/instagram',
+                      link: 'https://www.instagram.com/razael.deb',
+                    },
+                    {
+                      name: 'Facebook',
+                      icon: <UserIcon className="w-8 h-8" />,
+                      color: 'bg-white/10',
+                      text: 'Connect on FB',
+                      link: 'https://www.facebook.com/share/1Sup6qAPBt/',
+                    },
+                    {
+                      name: 'Email',
+                      icon: <Mail className="w-8 h-8" />,
+                      color: 'bg-white/10',
+                      text: 'Send Email',
+                      link: 'mailto:me@razael-fox.my.id',
                     },
                   ].map((service) => (
                     <motion.a
